@@ -1,0 +1,54 @@
+﻿@page
+@model GestiuneRestaurant.Pages.Rezervari.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervare[0].NumeClient)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervare[0].DataRezervare)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervare[0].NumarPersoane)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rezervare[0].Masa)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Rezervare) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumeClient)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DataRezervare)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NumarPersoane)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Masa.MasaId)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.RezervareId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.RezervareId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.RezervareId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

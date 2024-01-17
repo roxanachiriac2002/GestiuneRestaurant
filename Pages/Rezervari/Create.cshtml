@@ -1,0 +1,80 @@
+﻿@page
+@model GestiuneRestaurant.Pages.Rezervari.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Rezervare</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Rezervare.NumeClient" class="control-label"></label>
+                <input asp-for="Rezervare.NumeClient" class="form-control" />
+                <span asp-validation-for="Rezervare.NumeClient" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rezervare.DataRezervare" class="control-label"></label>
+                <input asp-for="Rezervare.DataRezervare" type="datetime-local" class="form-control" />
+                <span asp-validation-for="Rezervare.DataRezervare" class="text-danger"></span>
+            </div>
+            @if (Model.OreDisponibile != null && Model.OreDisponibile.Any(ora => !ora.Value))
+            {
+                <div class="alert alert-warning">
+                    <strong>Atenție!</strong> Următoarele ore sunt deja rezervate pentru masa selectată. Vă rugăm să selectați o altă oră.
+                    <ul>
+                        @foreach (var ora in Model.OreDisponibile.Where(ora => !ora.Value))
+                        {
+                            <li>@ora.Key</li>
+                        }
+                    </ul>
+                </div>
+            }
+
+            <div class="form-group">
+                <label asp-for="Rezervare.NumarPersoane" class="control-label"></label>
+                <select asp-for="Rezervare.NumarPersoane" class="form-control" asp-items="@Model.NumarPersoaneOptions"></select>
+                <span asp-validation-for="Rezervare.NumarPersoane" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Rezervare.MasaId" class="control-label"></label>
+                <select asp-for="Rezervare.MasaId" class="form-control" asp-items="Model.MeseDisponibile"></select>
+                <span asp-validation-for="Rezervare.MasaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var inputDateTime = document.querySelector('input[type="datetime-local"]');
+        inputDateTime.addEventListener('change', function () {
+            var value = inputDateTime.value;
+            if (value) {
+                // Setează minutele la 00
+                inputDateTime.value = value.substring(0, 14) + '00';
+            }
+        });
+    });
+</script>
+

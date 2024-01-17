@@ -1,0 +1,48 @@
+﻿@page
+@model GestiuneRestaurant.Pages.ProduseMeniu.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdusMeniu[0].Nume)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdusMeniu[0].Descriere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProdusMeniu[0].Pret)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.ProdusMeniu) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nume)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Descriere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pret)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ProdusMeniuId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ProdusMeniuId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ProdusMeniuId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

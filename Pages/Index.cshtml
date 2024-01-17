@@ -1,0 +1,53 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Gestiune Restaurant";
+}
+
+<header class="bg-dark py-5">
+    <div class="container px-5">
+        <div class="row gx-5 align-items-center justify-content-center">
+            <div class="col-lg-8 col-xl-7 col-xxl-6">
+                <div class="text-center text-white">
+                    <h1 class="display-4 fw-bolder">Bine ați venit la Gestiunea Restaurantului Nostru</h1>
+                    <p class="lead fw-normal text-white-50 mb-5">Descoperiți ușurința de a gestiona rezervările, comenzile și meniul cu sistemul nostru.</p>
+                </div>
+            </div>
+            <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="/Images/Restaurant.jpg" alt="Imagine Restaurant"></div>
+        </div>
+    </div>
+</header>
+
+<section class="py-5">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-book"></i></div>
+                <h2 class="h4 fw-bolder">Rezervări</h2>
+                <p>Gestionați toate rezervările dintr-un singur loc. Ușor și eficient.</p>
+                <a class="text-decoration-none" href="/Rezervari/Index">
+                    Vizualizați rezervările
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature bg-success bg-gradient text-white rounded-3 mb-3"><i class="bi bi-basket"></i></div>
+                <h2 class="h4 fw-bolder">Comenzi</h2>
+                <p>Urmăriți și gestionați comenzile clienților în timp real.</p>
+                <a class="text-decoration-none" href="/Comenzi/Index">
+                    Gestionați comenzile
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature bg-warning bg-gradient text-white rounded-3 mb-3"><i class="bi bi-card-list"></i></div>
+                <h2 class="h4 fw-bolder">Meniu</h2>
+                <p>Actualizați și personalizați meniul restaurantului în orice moment.</p>
+                <a class="text-decoration-none" href="/ProduseMeniu/Index">
+                    Vedeți meniul
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
